@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      padding: 20px;
+      margin: 0;
+    }
+    
+    button {
+      background: #18A0FB;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      padding: 8px 16px;
+      cursor: pointer;
+      font-size: 14px;
+      margin: 5px 0;
+      width: 100%;
+    }
+    
+    button:hover {
+      background: #0D8BE8;
+    }
+    
+    h2 {
+      font-size: 16px;
+      margin: 0 0 15px 0;
+    }
+  </style>
+</head>
+<body>
+  <h2>My Figma Plugin</h2>
+  <button id="create-rectangle">Create Rectangle</button>
+  <button id="close">Close</button>
+
+  <script>
+    document.getElementById('create-rectangle').onclick = () => {
+      parent.postMessage({ pluginMessage: { type: 'create-rectangle' } }, '*');
+    }
+
+    document.getElementById('close').onclick = () => {
+      parent.postMessage({ pluginMessage: { type: 'close' } }, '*');
+    }
+  </script>
+</body>
+</html>
