@@ -8,7 +8,7 @@ figma.ui.onmessage = (msg) => {
     const rect = figma.createRectangle();
     rect.x = 150;
     rect.y = 150;
-    rect.fills = [{type: 'SOLID', color: {r: 1, g: 0.5, b: 0}}];
+    rect.fills = [{type: 'SOLID', color: {r: 0.5, g: 0, b: 1}}];
     figma.currentPage.appendChild(rect);
     figma.currentPage.selection = [rect];
     figma.viewport.scrollAndZoomIntoView([rect]);
