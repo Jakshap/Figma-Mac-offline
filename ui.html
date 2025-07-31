@@ -28,14 +28,53 @@
       font-size: 16px;
       margin: 0 0 15px 0;
     }
+    
+    input {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      margin: 5px 0;
+      font-size: 14px;
+      box-sizing: border-box;
+    }
+    
+    .spotify-section {
+      margin-bottom: 20px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #eee;
+    }
   </style>
 </head>
 <body>
-  <h2>My Figma Plugin</h2>
+  <h2>Spotify Color Palette</h2>
+  
+  <div class="spotify-section">
+    <input type="text" id="spotify-url" placeholder="Paste Spotify track URL here..." />
+    <button id="generate-palette">Generate Color Palette</button>
+  </div>
+  
+  <div class="spotify-section">
+    <button id="taylor-swift-albums">All Taylor Swift Albums</button>
+  </div>
+  
   <button id="create-rectangle">Create Rectangle</button>
   <button id="close">Close</button>
 
   <script>
+    document.getElementById('generate-palette').onclick = () => {
+      const url = document.getElementById('spotify-url').value;
+      if (!url) {
+        alert('Please enter a Spotify URL');
+        return;
+      }
+      parent.postMessage({ pluginMessage: { type: 'generate-palette', url: url } }, '*');
+    }
+
+    document.getElementById('taylor-swift-albums').onclick = () => {
+      parent.postMessage({ pluginMessage: { type: 'taylor-swift-albums' } }, '*');
+    }
+
     document.getElementById('create-rectangle').onclick = () => {
       parent.postMessage({ pluginMessage: { type: 'create-rectangle' } }, '*');
     }
